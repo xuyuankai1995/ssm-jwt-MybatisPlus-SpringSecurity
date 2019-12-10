@@ -1,7 +1,10 @@
 package com.elderly.aid.area.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.elderly.aid.area.entity.AqyAreacity;
 import com.elderly.aid.area.entity.AqyAreaprovince;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +15,8 @@ import com.elderly.aid.area.entity.AqyAreaprovince;
  * @since 2019-12-10
  */
 public interface AqyAreaprovinceMapper extends BaseMapper<AqyAreaprovince> {
-
+    /**
+     * 查询省级ID
+     * */
+    List<AqyAreaprovince> getProvinceList();
 }

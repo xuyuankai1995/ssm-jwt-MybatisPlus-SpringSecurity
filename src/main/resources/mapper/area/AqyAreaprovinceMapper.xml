@@ -14,4 +14,8 @@
         <result column="DeleteTime" property="DeleteTime" />
     </resultMap>
 
+    <select id="getProvinceList" resultType="com.elderly.aid.area.entity.AqyAreaprovince">
+        select * from Aqy_AreaProvince
+    </select>
+
 </mapper>

@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.elderly.aid.area.entity.AqyAreacity;
 import com.elderly.aid.area.mapper.AqyAreacityMapper;
 import com.elderly.aid.area.service.AqyAreacityService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,4 +20,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class AqyAreacityServiceImpl extends ServiceImpl<AqyAreacityMapper, AqyAreacity> implements AqyAreacityService {
 
+    @Autowired
+    private AqyAreacityMapper baseMapper;
+
+    /**
+     * 通过省级ID查询城市ID
+     * */
+    @Override
+    public List<AqyAreacity> getCityListByProvinceCode(String ProvinceCode) {
+
+        return baseMapper.getCityListByProvinceCode(ProvinceCode);
+
+    }
 }

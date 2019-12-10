@@ -1,6 +1,8 @@
 package com.elderly.aid.area.controller;
 
 
+import com.elderly.aid.area.service.AqyAreacityService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,4 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/aqyAreaCity")
 public class AqyAreaCityController {
 
+    @Autowired
+    private AqyAreacityService aqyAreacityService;
 }

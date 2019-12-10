@@ -15,4 +15,22 @@
         <result column="DeleteTime" property="DeleteTime" />
     </resultMap>
 
+    <!-- 通过省级ID查询城市ID-->
+    <select id="getCityListByProvinceCode" resultType="com.elderly.aid.area.entity.AqyAreacity">
+        SELECT
+            CityID,
+            CityCode,
+            CityName,
+            ProvinceCode,
+            CreateTime,
+            ModifyTime,
+            DeleteFlag,
+            DeleteBy,
+            DeleteTime
+        FROM
+            Aqy_AreaCity
+        WHERE
+            ProvinceCode = #{ProvinceCode}
+    </select>
+
 </mapper>
