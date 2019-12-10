@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.elderly.aid.sys.mapper.AqySysdepartmentlearderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.elderly.aid.sys.entity.AqySysdepartmentlearder">
+        <id column="DepartmentLearderID" property="DepartmentLearderID" />
+        <result column="DepartmentID" property="DepartmentID" />
+        <result column="UserID" property="UserID" />
+        <result column="CreateTime" property="CreateTime" />
+        <result column="DeleteFlag" property="DeleteFlag" />
+        <result column="DeleteBy" property="DeleteBy" />
+        <result column="DeleteTime" property="DeleteTime" />
+    </resultMap>
+
+</mapper>

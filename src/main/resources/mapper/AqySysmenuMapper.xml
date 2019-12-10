@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.elderly.aid.sys.mapper.AqySysmenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.elderly.aid.sys.entity.AqySysmenu">
+        <id column="MenuID" property="MenuID" />
+        <result column="MenuName" property="MenuName" />
+        <result column="MenuParentID" property="MenuParentID" />
+        <result column="Url" property="Url" />
+        <result column="Iconic" property="Iconic" />
+        <result column="Sort" property="Sort" />
+        <result column="Description" property="Description" />
+        <result column="Enable" property="Enable" />
+        <result column="CreateTime" property="CreateTime" />
+        <result column="CreateBy" property="CreateBy" />
+        <result column="ModifyTime" property="ModifyTime" />
+        <result column="ModifyBy" property="ModifyBy" />
+        <result column="DeleteFlag" property="DeleteFlag" />
+        <result column="DeleteBy" property="DeleteBy" />
+        <result column="DeleteTime" property="DeleteTime" />
+    </resultMap>
+
+</mapper>
