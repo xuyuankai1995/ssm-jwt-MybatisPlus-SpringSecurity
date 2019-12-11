@@ -26,5 +26,5 @@ spring:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
 mybatis-plus:
-  mapper-locations:  mybatis/**/*Mapper.xml
-  type-aliases-package: com.aqy.elderly.aid.**.entity.
+  mapper-locations:  classpath:/mapper/**/*Mapper.xml
+  type-aliases-package: com.elderly.aid.entity.**.

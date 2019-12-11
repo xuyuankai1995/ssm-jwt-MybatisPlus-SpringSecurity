@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.elderly.aid.mapper.area.AqyAreaProvinceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.elderly.aid.entity.area.AqyAreaProvince">
+        <id column="ProvinceID" property="ProvinceID" jdbcType="NVARCHAR" />
+        <result column="ProvinceCode" property="ProvinceCode" jdbcType="NVARCHAR" />
+        <result column="ProvinceName" property="ProvinceName" jdbcType="NVARCHAR" />
+        <result column="CreateTime" property="CreateTime" jdbcType="TIMESTAMP" />
+        <result column="ModifyTime" property="ModifyTime" jdbcType="TIMESTAMP" />
+        <result column="DeleteFlag" property="DeleteFlag" jdbcType="BIT" />
+        <result column="DeleteBy" property="DeleteBy" jdbcType="VARCHAR" />
+        <result column="DeleteTime" property="DeleteTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <!---->
+    <select id="getAllProvinceByName" resultType="com.elderly.aid.entity.area.AqyAreaProvince">
+        SELECT
+            ProvinceID,
+            ProvinceCode,
+            ProvinceName,
+            CreateTime,
+            ModifyTime,
+            DeleteFlag,
+            DeleteBy,
+            DeleteTime
+        FROM
+            Aqy_AreaProvince
+        WHERE
+            DeleteFlag = 0
+            <if test="keyword!=null and keyword!=''">
+                AND ProvinceName LIKE #{keyword}
+            </if>
+        ORDER BY
+            ProvinceCode
+    </select>
+
+    <!---->
+    <select id="pageAllProvinceByName" resultType="com.elderly.aid.entity.area.AqyAreaProvince">
+        SELECT
+            TOP #{pageCount} ProvinceID,
+            ProvinceCode,
+            ProvinceName,
+            CreateTime,
+            ModifyTime,
+            DeleteFlag,
+            DeleteBy,
+            DeleteTime
+        FROM(
+            SELECT
+                ROW_NUMBER ( ) OVER ( ORDER BY ProvinceCode ) AS RowNumber,
+                ProvinceID,
+                ProvinceCode,
+                ProvinceName,
+                CreateTime,
+                ModifyTime,
+                DeleteFlag,
+                DeleteBy,
+                DeleteTime
+            FROM
+                Aqy_AreaProvince
+            WHERE
+                DeleteFlag = 0
+                <if test="keyword!=null and keyword!=''">
+                    AND ProvinceName LIKE #{keyword}
+                </if>
+        ) AS A
+        WHERE
+        RowNumber > #{pageCount} * ( #{pageSize}-1 )
+    </select>
+
+    <!---->
+    <select id="getAllProvinceCountByName" resultType="java.lang.Integer">
+        SELECT
+            COUNT( ProvinceID ) as Totle
+        FROM
+            Aqy_AreaProvince
+        WHERE
+            DeleteFlag = 0
+            <if test="keyword!=null and keyword!=''">
+                AND ProvinceName LIKE #{keyword}
+            </if>
+    </select>
+
+
+</mapper>
