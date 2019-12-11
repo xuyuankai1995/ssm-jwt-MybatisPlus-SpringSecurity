@@ -1,6 +1,7 @@
 package com.elderly.aid.controller.area;
 
 
+import com.elderly.aid.common.utils.JsonUtils;
 import com.elderly.aid.entity.area.AqyAreaProvince;
 import com.elderly.aid.models.ApiBaseModels.ApiModelList;
 import com.elderly.aid.service.area.AqyAreaProvinceService;
@@ -25,11 +26,11 @@ public class AqyAreaProvinceController {
     @Autowired
     private AqyAreaProvinceService aqyAreaProvinceService;
 
-    @GetMapping("/GetAllProvince")
+    @GetMapping(value = "/GetAllProvince",produces = "application/json;charset=utf-8")
     @ResponseBody
-    public ApiModelList<AqyAreaProvince> GetAllProvince(@RequestParam("keywords") String keywords)
-    {
+    public String GetAllProvince(@RequestParam("keywords") String keywords) throws Exception {
         List<AqyAreaProvince> list = aqyAreaProvinceService.getAllProvinceByName(keywords);
-        return new ApiModelList().Success(list,"获取成功！");
+        ApiModelList<AqyAreaProvince> modelList = new ApiModelList().Success(list,"获取成功！");
+        return JsonUtils.beanToJson(modelList);
     }
 }
